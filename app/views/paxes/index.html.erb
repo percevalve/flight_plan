@@ -1,0 +1,43 @@
+<h1>Listing paxes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nom</th>
+      <th>Prenom</th>
+      <th>Lieu de naissance</th>
+      <th>Date de naissance</th>
+      <th>Adulte</th>
+      <th>Enfant</th>
+      <th>Observations</th>
+      <th>Flight</th>
+      <th>Resa</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @paxes.each do |pax| %>
+      <tr>
+        <td><%= pax.nom %></td>
+        <td><%= pax.prenom %></td>
+        <td><%= pax.lieu_de_naissance %></td>
+        <td><%= pax.date_de_naissance %></td>
+        <td><%= pax.adulte %></td>
+        <td><%= pax.enfant %></td>
+        <td><%= pax.observations %></td>
+        <td><%= pax.flight_id %></td>
+        <td><%= pax.resa_id %></td>
+        <td><%= link_to 'Show', pax %></td>
+        <td><%= link_to 'Edit', edit_pax_path(pax) %></td>
+        <td><%= link_to 'Destroy', pax, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Pax', new_pax_path %>

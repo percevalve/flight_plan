@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  flight_ref: 1
+  flight_date: 2014-06-18
+  time_tk_off: 2014-06-18 23:44:01
+  flight_name: MyString
+  pax_blocked: 1
+  seats: 1
+  flight_status: MyString
+  remark: MyText
+
+two:
+  flight_ref: 1
+  flight_date: 2014-06-18
+  time_tk_off: 2014-06-18 23:44:01
+  flight_name: MyString
+  pax_blocked: 1
+  seats: 1
+  flight_status: MyString
+  remark: MyText

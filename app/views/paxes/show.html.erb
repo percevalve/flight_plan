@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nom:</strong>
+  <%= @pax.nom %>
+</p>
+
+<p>
+  <strong>Prenom:</strong>
+  <%= @pax.prenom %>
+</p>
+
+<p>
+  <strong>Lieu de naissance:</strong>
+  <%= @pax.lieu_de_naissance %>
+</p>
+
+<p>
+  <strong>Date de naissance:</strong>
+  <%= @pax.date_de_naissance %>
+</p>
+
+<p>
+  <strong>Adulte:</strong>
+  <%= @pax.adulte %>
+</p>
+
+<p>
+  <strong>Enfant:</strong>
+  <%= @pax.enfant %>
+</p>
+
+<p>
+  <strong>Observations:</strong>
+  <%= @pax.observations %>
+</p>
+
+<p>
+  <strong>Flight:</strong>
+  <%= @pax.flight_id %>
+</p>
+
+<p>
+  <strong>Resa:</strong>
+  <%= @pax.resa_id %>
+</p>
+
+<%= link_to 'Edit', edit_pax_path(@pax) %> |
+<%= link_to 'Back', paxes_path %>

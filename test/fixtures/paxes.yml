@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nom: MyString
+  prenom: MyString
+  lieu_de_naissance: MyString
+  date_de_naissance: 2014-06-18
+  adulte: false
+  enfant: false
+  observations: MyText
+  flight_id: 1
+  resa_id: 1
+
+two:
+  nom: MyString
+  prenom: MyString
+  lieu_de_naissance: MyString
+  date_de_naissance: 2014-06-18
+  adulte: false
+  enfant: false
+  observations: MyText
+  flight_id: 1
+  resa_id: 1

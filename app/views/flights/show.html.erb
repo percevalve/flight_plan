@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Flight ref:</strong>
+  <%= @flight.flight_ref %>
+</p>
+
+<p>
+  <strong>Flight date:</strong>
+  <%= @flight.flight_date %>
+</p>
+
+<p>
+  <strong>Time tk off:</strong>
+  <%= @flight.time_tk_off %>
+</p>
+
+<p>
+  <strong>Flight name:</strong>
+  <%= @flight.flight_name %>
+</p>
+
+<p>
+  <strong>Pax blocked:</strong>
+  <%= @flight.pax_blocked %>
+</p>
+
+<p>
+  <strong>Seats:</strong>
+  <%= @flight.seats %>
+</p>
+
+<p>
+  <strong>Flight status:</strong>
+  <%= @flight.flight_status %>
+</p>
+
+<p>
+  <strong>Remark:</strong>
+  <%= @flight.remark %>
+</p>
+
+<%= link_to 'Edit', edit_flight_path(@flight) %> |
+<%= link_to 'Back', flights_path %>

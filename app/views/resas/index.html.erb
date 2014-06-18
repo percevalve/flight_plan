@@ -1,0 +1,45 @@
+<h1>Listing resas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Refresa</th>
+      <th>Demand</th>
+      <th>Duree</th>
+      <th>Paxa</th>
+      <th>Paxe</th>
+      <th>Vente</th>
+      <th>Nom</th>
+      <th>Telephone</th>
+      <th>Email</th>
+      <th>Observation</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @resas.each do |resa| %>
+      <tr>
+        <td><%= resa.refresa %></td>
+        <td><%= resa.demand %></td>
+        <td><%= resa.duree %></td>
+        <td><%= resa.paxa %></td>
+        <td><%= resa.paxe %></td>
+        <td><%= resa.vente %></td>
+        <td><%= resa.nom %></td>
+        <td><%= resa.telephone %></td>
+        <td><%= resa.email %></td>
+        <td><%= resa.observation %></td>
+        <td><%= link_to 'Show', resa %></td>
+        <td><%= link_to 'Edit', edit_resa_path(resa) %></td>
+        <td><%= link_to 'Destroy', resa, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Resa', new_resa_path %>
