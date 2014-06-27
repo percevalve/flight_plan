@@ -19,7 +19,8 @@
 <% the_date = @flights.first.flight_date %>
 <% @flights.each_with_index do |flight| %>
 <% 	flight_ref = flight.flight_ref %>
-<% if the_date != flight.flight_date%>
+<% if the_date != flight.flight_date %>
+	<% the_date = flight.flight_date %>
 	</ul></li>
 	<li><%= flight.flight_date %>
 	<ul>
