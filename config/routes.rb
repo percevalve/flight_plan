@@ -1,4 +1,5 @@
 FlightPlan::Application.routes.draw do
+  root 'flight_status#overview'
   get "flight_status/overview"
   get "flight_status/daily"
   resources :flight_times
