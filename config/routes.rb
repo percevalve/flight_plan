@@ -1,4 +1,5 @@
 FlightPlan::Application.routes.draw do
+  get "greetings/index"
   root 'flight_status#overview'
   get "flight_status/overview"
   get "flight_status/daily"

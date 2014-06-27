@@ -1,4 +1,5 @@
-class FlightStatusController < ApplicationController
+class FlightStatusController < GreetingsController
+  before_filter :require_token
   def overview
   	@flights = Flight.list_upcoming_visible_flights
   	@seats_per_day = Flight.list_upcoming_visible_flights.joins(:resas).group(:flight_date).sum(:seats)
