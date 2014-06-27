@@ -8,6 +8,6 @@ class Flight < ActiveRecord::Base
   	end
 
   	def self.list_upcoming_visible_flights
-  		where(flight_status:'SHOW').where("flight_date >= ?", Time.zone.now.beginning_of_day).order(:flight_ref)
+  		where(flight_status:'SHOW').where("flight_date >= ?", Time.zone.now.beginning_of_day)
   	end
 end
