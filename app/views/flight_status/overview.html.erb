@@ -1,9 +1,9 @@
 <h1>Flight Overview</h1>
 <ul>
 <% @seats_per_day.each_with_index do |seat,index| %>
-<%	theDay =  seat[0] %>
-<%	seats =  seat[1] %>
-<%	blocked =  @pax_blocked_per_day[theDay] %>
+<%	theDay = seat[0] %>
+<%	seats =  seat[1].to_i %>
+<%	blocked =  @pax_blocked_per_day[theDay].to_i %>
 <%  pax = (@paxa_per_day[theDay]+@paxe_per_day[theDay])%>
 <%  remaining = seats - blocked - pax %>
 
