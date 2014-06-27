@@ -4,7 +4,7 @@
 <%	theDay = seat[0] %>
 <%	seats =  seat[1].to_i %>
 <%	blocked =  @pax_blocked_per_day[theDay].to_i %>
-<%  pax = (@paxa_per_day[theDay]+@paxe_per_day[theDay]).to_i%>
+<%  pax = (@paxa_per_day[theDay].to_i + @paxe_per_day[theDay].to_i).to_i%>
 <%  remaining = seats - blocked - pax %>
 
 <li><%= link_to theDay.strftime("%d/%-m") + " : Remaining " + remaining.to_s + ", Total " + seats.to_s + ", Blocked " + blocked.to_s + " PAX "  + pax.to_s, flight_status_daily_path(flight_date: theDay) %></li>
