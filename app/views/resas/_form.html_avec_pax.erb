@@ -1,0 +1,91 @@
+<%= form_for(@resa) do |f| %>
+  <% if @resa.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@resa.errors.count, "error") %> prohibited this resa from being saved:</h2>
+
+      <ul>
+      <% @resa.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="row">
+  <div class="large-6 columns">    
+    <div class="field">
+    <%= f.label :nom %><br>
+    <%= f.text_area :nom %>
+    </div>
+</div>
+ <div class="large-2 columns">
+  <div class="field">
+    <%= f.label :telephone %><br>
+    <%= f.text_field :telephone %>
+  </div>
+</div>
+<div class="large-2 columns">
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+</div>
+<div class="large-1 columns">
+    <div class="field">
+    <%= f.label "Adulte" %><br>
+    <%= f.number_field :paxa %>
+  </div>
+  </div>
+  <div class="large-1 columns">
+  <div class="field">
+    <%= f.label "Enfant" %><br>
+    <%= f.number_field :paxe %>
+  </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-3 columns">
+  <div class="field">
+    <%= f.label "Date demandée" %><br>
+    <%= f.text_field :demand,class: "modelname_due_date",value: @resa.demand.try(:strftime, "%m/%d/%Y") %>
+  </div>
+</div>
+<div class="large-3 columns">
+    <div class="field">
+    <%= f.label "Flight Name" %><br>
+    <%= f.collection_select :flight_time_id, FlightTime.order(:flight), :id, :flight, include_blank: true %>
+  </div>
+</div>
+<div class="large-3 columns">
+  <div class="field">
+    <%= f.label :vente %><br>
+    <%= f.text_field :vente %>
+  </div>
+</div>
+<div class="field">
+  <div class="large-3 columns">
+    <%= f.label "Flight" %><br>
+    <%= f.collection_select :flight_id, Flight.order(:flight_ref), :id, :flight_ref, include_blank: true %>
+  </div>
+</div>
+</div>
+
+<div class="row">
+  <div class="large-12 columns">
+    <div class="field">
+    <%= f.label :observation %><br>
+    <%= f.text_area :observation %>
+  </div>
+</div>
+
+  <%= f.fields_for :paxes do |builder| %>
+    <div class="field">
+    </div>
+    <p>
+     <%= render 'paxes_details', :f => builder %>
+    </p>
+  <% end %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

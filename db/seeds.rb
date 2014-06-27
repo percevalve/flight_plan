@@ -5,3 +5,30 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+require 'csv'
+
+csv_text = File.read('flight_time.csv')
+csv = CSV.parse(csv_text, :headers => true)
+csv.each do |row|
+  FlightTime.create!(row.to_hash)
+end
+
+csv_text = File.read('flight.csv', encoding: "ISO8859-1")
+csv = CSV.parse(csv_text, :headers => true)
+csv.each do |row|
+	row['flight_date'] = Date.strptime(row['flight_date'], "%m/%d/%y") unless row["flight_date"] == "#VALUE!"
+	row['flight_time_id'] = FlightTime.where(flight: row['FlightName']).first.id unless FlightTime.where(flight: row['FlightName']) == 0
+	row.delete('FlightName')
+	Flight.create!(row.to_hash)
+end
+
+csv_text = File.read('resa.csv', encoding: "ISO8859-1")
+csv = CSV.parse(csv_text, :headers => true)
+csv.each do |row|
+	row['demand'] = Date.strptime(row['demand'], "%d/%m/%Y") unless row["demand"] == "#VALUE!"
+	row['flight_time_id'] = FlightTime.where(flight: row['FlightName']).first.id unless FlightTime.where(flight: row['FlightName']).count == 0
+	row['flight_id'] = Flight.where(flight_ref: row['flight']).first.id unless Flight.where(flight_ref: row['flight']).count == 0
+	row.delete('FlightName')
+	row.delete('flight')
+	Resa.create!(row.to_hash)
+end

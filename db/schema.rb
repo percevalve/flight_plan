@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140618214410) do
+ActiveRecord::Schema.define(version: 20140627133610) do
+
+  create_table "flight_times", force: true do |t|
+    t.string   "flight"
+    t.time     "time"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "flights", force: true do |t|
     t.integer  "flight_ref"
@@ -24,6 +31,7 @@ ActiveRecord::Schema.define(version: 20140618214410) do
     t.text     "remark"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "flight_time_id"
   end
 
   create_table "paxes", force: true do |t|
@@ -53,6 +61,9 @@ ActiveRecord::Schema.define(version: 20140618214410) do
     t.text     "observation"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "flight_id"
+    t.integer  "flight_time_id"
+    t.string   "heure_demand"
   end
 
 end

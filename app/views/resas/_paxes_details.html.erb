@@ -1,0 +1,28 @@
+  <div class="field">
+    <%= f.label :nom %><br>
+    <%= f.text_field :nom %>
+  </div>
+  <div class="field">
+    <%= f.label :prenom %><br>
+    <%= f.text_field :prenom %>
+  </div>
+  <div class="field">
+    <%= f.label :lieu_de_naissance %><br>
+    <%= f.text_field :lieu_de_naissance %>
+  </div>
+  <div class="field">
+    <%= f.label :date_de_naissance %><br>
+    <%= f.text_field :date_de_naissance,class: "modelname_dob" %>
+  </div>
+  <div class="field">
+    <%= f.label :adulte %><br>
+    <%= f.check_box :adulte %>
+  </div>
+  <div class="field">
+    <%= f.label :enfant %><br>
+    <%= f.check_box :enfant %>
+  </div>
+  <div class="field">
+    <%= f.label :observations %><br>
+    <%= f.text_area :observations %>
+  </div>

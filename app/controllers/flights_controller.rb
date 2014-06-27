@@ -15,6 +15,7 @@ class FlightsController < ApplicationController
   # GET /flights/new
   def new
     @flight = Flight.new
+    @flight.build_flight_time
   end
 
   # GET /flights/1/edit
@@ -69,6 +70,11 @@ class FlightsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def flight_params
-      params.require(:flight).permit(:flight_ref, :flight_date, :time_tk_off, :flight_name, :pax_blocked, :seats, :flight_status, :remark)
+      params.require(:flight).permit(:flight_ref, :flight_date, :time_tk_off,:flight_name, :flight_time_id, :pax_blocked, :seats, :flight_status, :remark)
+      if params[:flight][:flight_time_id] == ""
+        params.require(:flight).permit(:flight_ref, :flight_date, :time_tk_off,:flight_name, :flight_time_id, :pax_blocked, :seats, :flight_status, :remark,:flight_time_attributes => [:flight, :time])
+      else
+        params.require(:flight).permit(:flight_ref, :flight_date, :time_tk_off,:flight_name, :flight_time_id, :pax_blocked, :seats, :flight_status, :remark)  
+      end
     end
 end

@@ -14,7 +14,10 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
 gem 'zurb-foundation'
-
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
+gem 'jquery-timepicker-rails'
+gem 'jquery-datatables-rails', :github=> 'rweng/jquery-datatables-rails'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
@@ -56,3 +59,4 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+ruby '2.0.0'

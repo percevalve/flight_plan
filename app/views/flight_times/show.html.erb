@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Flight:</strong>
+  <%= @flight_time.flight %>
+</p>
+
+<p>
+  <strong>Time:</strong>
+  <%= @flight_time.time.strftime("%H:%M") %>
+</p>
+
+<%= link_to 'Edit', edit_flight_time_path(@flight_time) %> |
+<%= link_to 'Back', flight_times_path %>

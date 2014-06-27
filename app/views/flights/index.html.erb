@@ -1,6 +1,6 @@
 <h1>Listing flights</h1>
 
-<table>
+<table id="flights">
   <thead>
     <tr>
       <th>Flight ref</th>
@@ -22,8 +22,8 @@
       <tr>
         <td><%= flight.flight_ref %></td>
         <td><%= flight.flight_date %></td>
-        <td><%= flight.time_tk_off %></td>
-        <td><%= flight.flight_name %></td>
+        <td><%= flight.time_tk_off.strftime("%H:%M") %></td>
+        <td><%= flight.flight_time.flight unless flight.flight_time.nil? %></td>
         <td><%= flight.pax_blocked %></td>
         <td><%= flight.seats %></td>
         <td><%= flight.flight_status %></td>

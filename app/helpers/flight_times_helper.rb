@@ -1,0 +1,2 @@
+module FlightTimesHelper
+end

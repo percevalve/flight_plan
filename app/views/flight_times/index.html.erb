@@ -1,0 +1,29 @@
+<h1>Listing flight_times</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Flight</th>
+      <th>Time</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @flight_times.each do |flight_time| %>
+      <tr>
+        <td><%= flight_time.flight %></td>
+        <td><%= flight_time.time.strftime("%H:%M") %></td>
+        <td><%= link_to 'Show', flight_time %></td>
+        <td><%= link_to 'Edit', edit_flight_time_path(flight_time) %></td>
+        <td><%= link_to 'Destroy', flight_time, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Flight time', new_flight_time_path %>

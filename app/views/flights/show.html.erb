@@ -12,12 +12,12 @@
 
 <p>
   <strong>Time tk off:</strong>
-  <%= @flight.time_tk_off %>
+  <%= @flight.time_tk_off.strftime("%H:%M") %>
 </p>
 
 <p>
   <strong>Flight name:</strong>
-  <%= @flight.flight_name %>
+  <%= @flight.flight_time.flight unless @flight.flight_time.nil? %>
 </p>
 
 <p>

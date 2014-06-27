@@ -1,0 +1,29 @@
+<h1>Flight Overview</h1>
+<ul>
+<% @seats_per_day.each_with_index do |seat,index| %>
+<%	theDay =  seat[0] %>
+<%	seats =  seat[1] %>
+<%	blocked =  @pax_blocked_per_day[theDay] %>
+<%  pax = (@paxa_per_day[theDay]+@paxe_per_day[theDay])%>
+<%  remaining = seats - blocked - pax %>
+
+<li><%= link_to theDay.strftime("%d/%-m") + " : Remaining " + remaining.to_s + ", Total " + seats.to_s + ", Blocked " + blocked.to_s + " PAX "  + pax.to_s, flight_status_daily_path(flight_date: theDay) %></li>
+<% end %>
+<ul>
+
+
+<h1>Flight Overview</h1>
+<ul>
+<li><%= @flights.first.flight_date %>
+	<ul>
+<% the_date = @flights.first.flight_date %>
+<% @flights.each_with_index do |flight| %>
+<% 	flight_ref = flight.flight_ref %>
+<% if the_date != flight.flight_date%>
+	</ul></li>
+	<li><%= flight.flight_date %>
+	<ul>
+<% end %> 
+	<li><%= flight.flight_ref%></li>
+<% end %>
+<ul>

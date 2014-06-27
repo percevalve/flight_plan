@@ -69,7 +69,4 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: flight_plan_production
   pool: 5
-  username: flight_plan
-  password:

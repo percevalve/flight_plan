@@ -15,6 +15,7 @@ class ResasController < ApplicationController
   # GET /resas/new
   def new
     @resa = Resa.new
+    @resa.paxes.build
   end
 
   # GET /resas/1/edit

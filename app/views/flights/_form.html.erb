@@ -10,40 +10,73 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :flight_ref %><br>
-    <%= f.number_field :flight_ref %>
+<div class="row">
+  <div class="large-4 columns">    
+    <div class="field">
+      <%= f.label :flight_ref %><br>
+      <%= f.number_field :flight_ref %>
+    </div>
+  </div>
+  <div class="large-4 columns">
+    <div class="field">
+      <%= f.label :flight_date %><br>
+      <%= f.text_field :flight_date,class: "modelname_due_date",value: @flight.flight_date.try(:strftime, "%m/%d/%Y") %>
+    </div>
+  </div>
+  <div class="large-4 columns">
+    <div class="field">
+      <%= f.label :time_tk_off %><br>
+      <%= f.text_field :time_tk_off,class: "modelname_time" %>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="large-4 columns">
+    <div class="field">
+    <%= f.label "Flight Name" %><br>
+    <%= f.collection_select :flight_time_id, FlightTime.order(:flight), :id, :flight, include_blank: true %>
+    <%= f.fields_for :flight_time do |ff| %>
+    <br>
+    <div class="field">
+    <%= ff.label :flight %><br>
+    <%= ff.text_field :flight %>
   </div>
   <div class="field">
-    <%= f.label :flight_date %><br>
-    <%= f.date_select :flight_date %>
+    <%= ff.label :time %><br>
+    <%= ff.time_select :time %>
   </div>
-  <div class="field">
-    <%= f.label :time_tk_off %><br>
-    <%= f.time_select :time_tk_off %>
+  <% end %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :flight_name %><br>
-    <%= f.text_field :flight_name %>
+  <div class="large-4 columns">
+    <div class="field">
+      <%= f.label :pax_blocked %><br>
+      <%= f.number_field :pax_blocked %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :pax_blocked %><br>
-    <%= f.number_field :pax_blocked %>
+  <div class="large-4 columns">
+    <div class="field">
+      <%= f.label :seats %><br>
+      <%= f.number_field :seats %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :seats %><br>
-    <%= f.number_field :seats %>
+</div>
+<div class="row">
+  <div class="large-6 columns">
+    <div class="field">
+      <%= f.label :flight_status %><br>
+      <%= f.text_field :flight_status %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :flight_status %><br>
-    <%= f.text_field :flight_status %>
+  <div class="large-6 columns">
+    <div class="field">
+      <%= f.label :remark %><br>
+      <%= f.text_area :remark %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :remark %><br>
-    <%= f.text_area :remark %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+</div>
+<div class="row">
+    <div class="actions">
+      <%= f.submit %>
+    </div>
 <% end %>
