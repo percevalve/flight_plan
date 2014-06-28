@@ -1,19 +1,18 @@
 <h1>Listing resas</h1>
 
-<table>
+<table id="flights">
   <thead>
     <tr>
-      <th>Refresa</th>
-      <th>Demand</th>
-      <th>Duree</th>
-      <th>Paxa</th>
-      <th>Paxe</th>
-      <th>Vente</th>
       <th>Nom</th>
       <th>Telephone</th>
       <th>Email</th>
+      <th>Date demandée</th>
+      <th>Type de vol</th>
+      <td>Référence de vol</th>
+      <th>Adultes</th>
+      <th>Enfants</th>
+      <th>Vente</th>
       <th>Observation</th>
-      <th></th>
       <th></th>
       <th></th>
     </tr>
@@ -22,19 +21,18 @@
   <tbody>
     <% @resas.each do |resa| %>
       <tr>
-        <td><%= resa.refresa %></td>
-        <td><%= resa.demand %></td>
-        <td><%= resa.duree %></td>
-        <td><%= resa.paxa %></td>
-        <td><%= resa.paxe %></td>
-        <td><%= resa.vente %></td>
         <td><%= resa.nom %></td>
         <td><%= resa.telephone %></td>
         <td><%= resa.email %></td>
+        <td><%= resa.demand %></td>
+        <td><%= resa.flight_time.try(:name_with_flight_time) %></td>
+        <td><%= resa.flight.try(:name_with_details) %></td>
+        <td><%= resa.paxa %></td>
+        <td><%= resa.paxe %></td>
+        <td><%= resa.vente %></td>
         <td><%= resa.observation %></td>
-        <td><%= link_to 'Show', resa %></td>
-        <td><%= link_to 'Edit', edit_resa_path(resa) %></td>
-        <td><%= link_to 'Destroy', resa, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Modifier', edit_resa_path(resa) %></td>
+        <td><%= link_to 'Effacer', resa, method: :delete, data: { confirm: 'Cette réservation va être effacée !' } %></td>
       </tr>
     <% end %>
   </tbody>

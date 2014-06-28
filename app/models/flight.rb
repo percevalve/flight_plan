@@ -10,4 +10,9 @@ class Flight < ActiveRecord::Base
   	def self.list_upcoming_visible_flights
   		where(flight_status:'SHOW').where("flight_date >= ?", Time.zone.now.beginning_of_day)
   	end
+
+  	def self.day_of_flight
+  		where(flight_status:'SHOW').where("flight_date >= ?", Time.zone.now.beginning_of_day).includes(:resas).group(:flight_date)
+  	end
+
 end

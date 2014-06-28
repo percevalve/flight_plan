@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140627133610) do
+ActiveRecord::Schema.define(version: 20140627210310) do
 
   create_table "flight_times", force: true do |t|
     t.string   "flight"
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20140627133610) do
 
   create_table "resas", force: true do |t|
     t.string   "refresa"
-    t.datetime "demand"
+    t.date     "demand"
     t.string   "duree"
     t.integer  "paxa"
     t.integer  "paxe"

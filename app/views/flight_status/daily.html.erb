@@ -1,3 +1,25 @@
-<h1>FlightStatus#daily</h1>
-<p>Find me in app/views/flight_status/daily.html.erb</p>
-<%= @flights.first.flight_ref %>
+<ul>
+<li>Les Vols du <%= @jour %></li>
+	<ul>
+<% the_date = @jour %>
+<% @flights.each do |flight| %>
+<% 	flight_ref = flight.flight_ref %>
+<%	seats =  @seats_per_flight[flight_ref].to_i %>
+<%	blocked =  @pax_blocked_per_flight[flight_ref].to_i %>
+<%  pax = (@paxa_per_flight[flight_ref].to_i + @paxe_per_flight[flight_ref].to_i).to_i%>
+<%  remaining = seats - blocked - pax %>
+<% if the_date != flight.flight_date %>
+	<% the_date = flight.flight_date %>
+	</ul></li>
+	<li><%= flight.flight_date %>
+	<ul>
+<% end %> 
+	<li><%= "Vol n°" + flight.name_with_details + " places disponibles : " + remaining.to_s + "/" + seats.to_s %>
+		<ul>
+		<li><%= link_to "Ajouter un passager au vol " + flight.flight_ref.to_s , new_resa_path(flight_id: flight.id)%></li>
+		<% flight.resas.each do |resa| %>
+		<li><%= link_to resa.name_with_details, edit_resa_path(resa) %></li>
+		<% end %>
+	</ul>
+<% end %>
+<ul>

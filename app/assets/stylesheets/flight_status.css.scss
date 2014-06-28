@@ -1,3 +1,16 @@
 // Place all the styles related to the FlightStatus controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.invalid td{
+	background-color: red !important;
+}
+
+.available td{
+	font-weight: bold !important;
+}
+
+.full td{
+	font-style: oblique !important;
+	font-weight: lighter;
+}

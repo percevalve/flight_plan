@@ -1,6 +1,7 @@
-<h1>Editing resa</h1>
+<h1>Modifier la réservaton :</h1>
+<p id="notice"><%= notice %></p>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @resa %> |
+<%= link_to 'Effacer', @resa, method: :delete, data: { confirm: 'Cette réservation va être effacée !' } %>
 <%= link_to 'Back', resas_path %>

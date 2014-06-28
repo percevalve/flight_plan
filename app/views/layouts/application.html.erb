@@ -22,6 +22,27 @@
   </head>
 
   <body>
+    <nav class="top-bar">
+    <ul class="title-area">
+    <li class="name">
+      <h1><%= link_to "Airship Flight Plan", flight_status_overview_path %></a></h1>
+    </li>
+  </ul>
+  <section class="top-bar-section">
+    <ul class="right">
+      <li class="divider"></li>
+      <li><%= link_to "Les réservations", resas_path %></li>
+      <li class="divider"></li>
+      <li><%= link_to "Ajouter une réservations", new_resa_path %></li>
+      <li class="divider"></li>
+      <li><%= link_to "Les vols du jour", flight_status_daily_path(flight_date: Flight.day_of_flight.first.flight_date) %></li>
+      <li class="divider"></li>
+      <li><%= link_to "Les vols de demain", flight_status_daily_path(flight_date: Flight.day_of_flight.second.flight_date) %></li>
+      <li class="divider"></li>
+      <li><%= link_to "Les vols", flight_status_overview_path %></li>
+    </ul>
+  </div>
+</nav>
 
     <%= yield %>
 

@@ -1,4 +1,5 @@
-class FlightsController < ApplicationController
+class FlightsController < GreetingsController
+  before_filter :require_token
   before_action :set_flight, only: [:show, :edit, :update, :destroy]
 
   # GET /flights

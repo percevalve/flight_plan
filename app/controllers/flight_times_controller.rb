@@ -1,4 +1,5 @@
-class FlightTimesController < ApplicationController
+class FlightTimesController < GreetingsController
+  before_filter :require_token
   before_action :set_flight_time, only: [:show, :edit, :update, :destroy]
 
   # GET /flight_times

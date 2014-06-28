@@ -66,7 +66,7 @@
 <div class="field">
   <div class="large-3 columns">
     <%= f.label "Référence de vol" %><br>
-    <%= f.collection_select :flight_id, Flight.list_upcoming_visible_flights, :id, :name_with_details, include_blank: true %>
+    <%= f.collection_select :flight_id, @available_flights, :id, :name_with_details, include_blank: true %>
   </div>
 </div>
 </div>

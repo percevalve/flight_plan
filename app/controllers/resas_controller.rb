@@ -1,4 +1,5 @@
-class ResasController < ApplicationController
+class ResasController < GreetingsController
+  before_filter :require_token
   before_action :set_resa, only: [:show, :edit, :update, :destroy]
 
   # GET /resas
@@ -15,21 +16,30 @@ class ResasController < ApplicationController
   # GET /resas/new
   def new
     @resa = Resa.new
-    @resa.paxes.build
+    if params.include?(:flight_id)
+     theFlight = Flight.find(params[:flight_id])
+     @resa.flight_id = theFlight.id
+     @resa.flight_time_id = theFlight.flight_time.id
+     @resa.demand = theFlight.flight_date
+     @resa.heure_demand = theFlight.time_tk_off.to_s
+    end
+    @available_flights = Flight.list_upcoming_visible_flights.order(:flight_ref)
+    #@resa.paxes.build
   end
 
   # GET /resas/1/edit
   def edit
+    @available_flights = Flight.list_upcoming_visible_flights.order(:flight_ref)
+    #@available_flights.unshift(@resa.flight)
   end
 
   # POST /resas
   # POST /resas.json
   def create
     @resa = Resa.new(resa_params)
-
     respond_to do |format|
       if @resa.save
-        format.html { redirect_to @resa, notice: 'Resa was successfully created.' }
+        format.html { redirect_to edit_resa_path(@resa), notice: 'Mis à jour réussie' }
         format.json { render action: 'show', status: :created, location: @resa }
       else
         format.html { render action: 'new' }
@@ -43,7 +53,7 @@ class ResasController < ApplicationController
   def update
     respond_to do |format|
       if @resa.update(resa_params)
-        format.html { redirect_to @resa, notice: 'Resa was successfully updated.' }
+        format.html { redirect_to edit_resa_path(@resa), notice: 'Resa was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -70,6 +80,6 @@ class ResasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def resa_params
-      params.require(:resa).permit(:refresa, :demand, :duree, :paxa, :paxe, :vente, :nom, :telephone, :email, :observation)
+      params.require(:resa).permit(:refresa, :demand, :duree, :paxa, :paxe, :vente, :nom, :telephone, :email, :observation, :flight_id, :flight_time_id, :heure_demand)
     end
 end

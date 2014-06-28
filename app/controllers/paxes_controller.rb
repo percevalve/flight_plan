@@ -1,4 +1,5 @@
-class PaxesController < ApplicationController
+class PaxesController < GreetingsController
+  before_filter :require_token
   before_action :set_pax, only: [:show, :edit, :update, :destroy]
 
   # GET /paxes
