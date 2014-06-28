@@ -12,7 +12,7 @@ class Flight < ActiveRecord::Base
   	end
 
   	def self.day_of_flight
-  		where(flight_status:'SHOW').where("flight_date >= ?", Time.zone.now.beginning_of_day).includes(:resas).group(:flight_date)
+  		where(flight_status:'SHOW').where("flight_date >= ?", Time.zone.now.beginning_of_day).includes(:resas).group(:flight_date).order(:flight_date)
   	end
 
 end
