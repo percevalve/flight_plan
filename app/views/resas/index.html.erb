@@ -1,6 +1,6 @@
 <div class="row">
   <div class="large-12 columns">
-    <h1>Listing resas</h1>
+    <h1>Les Résas <%= " du#{@jour}" unless @jour.nil? %></h1>
 
 <table id="flights">
   <thead>
@@ -25,7 +25,7 @@
         <td><%= resa.nom %></td>
         <td><%= resa.telephone %></td>
         <td><%= resa.email %></td>
-        <td><%= resa.demand %></td>
+        <td><%= l(resa.demand,locale: :fr) unless resa.demand.nil?%></td>
         <td><%= resa.flight_time.try(:name_with_flight_time) %></td>
         <td><%= resa.flight.try(:name_with_details) %></td>
         <td><%= resa.paxa %></td>
