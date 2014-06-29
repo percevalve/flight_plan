@@ -1,4 +1,6 @@
-<h1>Listing resas</h1>
+<div class="row">
+  <div class="large-12 columns">
+    <h1>Listing resas</h1>
 
 <table id="flights">
   <thead>
@@ -13,7 +15,6 @@
       <th>Enfants</th>
       <th>Vente</th>
       <th>Observation</th>
-      <th></th>
       <th></th>
     </tr>
   </thead>
@@ -32,7 +33,6 @@
         <td><%= resa.vente %></td>
         <td><%= resa.observation %></td>
         <td><%= link_to 'Modifier', edit_resa_path(resa) %></td>
-        <td><%= link_to 'Effacer', resa, method: :delete, data: { confirm: 'Cette réservation va être effacée !' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -40,4 +40,6 @@
 
 <br>
 
-<%= link_to 'New Resa', new_resa_path %>
+<%= link_to 'Créer une résa', new_resa_path %>
+</div>
+</div>

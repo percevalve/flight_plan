@@ -5,7 +5,13 @@ class ResasController < GreetingsController
   # GET /resas
   # GET /resas.json
   def index
-    @resas = Resa.all
+    if params.include?(:resa_date)
+      jour = Date.strptime(params[:resa_date], "%d/%m/%y")
+      @resas = Resa.all_for_this_date(jour)
+    else
+      @resas = Resa.all
+    end
+    
   end
 
   # GET /resas/1

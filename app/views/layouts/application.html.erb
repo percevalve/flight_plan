@@ -32,10 +32,18 @@
   <section class="top-bar-section">
     <!-- Right Nav Section -->
     <ul class="right">
-      <li class="has-dropdown"><%= link_to "Les résa", resas_path %>
+      <li class="has-dropdown"><%= link_to "Les résas", resas_path(resa_date: Date.today) %>
         <ul class="dropdown">
-          <li><%= link_to "Les résa du jour", resas_path %></li>
+          <li><%= link_to "Toutes les résas", resas_path %></li>
           <li><%= link_to "Ajouter une résa", new_resa_path %></li>
+          <li class="has-dropdown"><%= link_to "Ajouter une résa", new_resa_path %>
+            <ul class="dropdown">
+              <% Flight.day_of_flight.each do |un_jour|%>
+                <% journee = un_jour.flight_date %>
+                <li><%= link_to "Les résas du #{journee} ", resas_path(resa_date: journee) %></li>
+              <% end %>
+            </ul>
+          </li>
         </ul></li>
       <li class="has-dropdown">
         <%= link_to "Les vols", flight_status_overview_path %>

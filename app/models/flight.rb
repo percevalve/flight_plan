@@ -4,15 +4,15 @@ class Flight < ActiveRecord::Base
 	accepts_nested_attributes_for :flight_time
 
 	def name_with_details
-    	"#{flight_ref} -> #{flight_date.try(:strftime, "%-d/%-m")}, #{time_tk_off.try(:strftime, "%k:%M")} "
+    	"#{flight_ref}, #{flight_time.try(:flight)} #{time_tk_off} "
   	end
 
   	def self.list_upcoming_visible_flights
-  		where(flight_status:'SHOW').where("flight_date >= ?", Time.zone.now.beginning_of_day)
+  		where(flight_status:'SHOW').where("flight_date >= ?", Date.today)
   	end
 
   	def self.day_of_flight
-  		where(flight_status:'SHOW').where("flight_date >= ?", Time.zone.now.beginning_of_day).includes(:resas).group(:flight_date).order(:flight_date).select(:flight_date)
+  		where(flight_status:'SHOW').where("flight_date >= ?", Date.today).includes(:resas).group(:flight_date).order(:flight_date).select(:flight_date)
   	end
 
 end

@@ -13,4 +13,8 @@ class Resa < ActiveRecord::Base
     		"#{nom} (#{telephone}) - #{pax} PAX"
     	end
   	end
+
+  	def self.all_for_this_date(the_date)
+  		includes(:flight).where("(flights.flight_date = ? and flight_id is not null) or (demand = ? and flight_id is null)",the_date,the_date)
+  	end
 end

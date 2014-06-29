@@ -1,5 +1,8 @@
-<ul>
-<li>Les Vols du <%= @jour %></li>
+<div class="row">
+  <div class="large-12 columns">
+  	<ul>
+<li>Les Vols du <%= @jour %>
+	<hr>
 	<ul>
 <% the_date = @jour %>
 <% @flights.each do |flight| %>
@@ -11,15 +14,18 @@
 <% if the_date != flight.flight_date %>
 	<% the_date = flight.flight_date %>
 	</ul></li>
-	<li><%= flight.flight_date %>
+	<li><%= l flight.flight_date,locale: :fr  %>
 	<ul>
 <% end %> 
-	<li><%= "Vol n°" + flight.name_with_details + " places disponibles : " + remaining.to_s + "/" + seats.to_s %>
+	<li><%= "Vol n°" + flight.name_with_details + " places disponibles : " + remaining.to_s + "/" + seats.to_s %> <%= link_to "Ajouter une résa au vol #{flight.flight_ref}" , new_resa_path(flight_id: flight.id), class: "button tiny" %>
 		<ul>
-		<li><%= link_to "Ajouter un passager au vol " + flight.flight_ref.to_s , new_resa_path(flight_id: flight.id)%></li>
 		<% flight.resas.each do |resa| %>
 		<li><%= link_to resa.name_with_details, edit_resa_path(resa) %></li>
 		<% end %>
 	</ul>
+	<hr>
 <% end %>
 <ul>
+	</li>
+</div>
+</div>

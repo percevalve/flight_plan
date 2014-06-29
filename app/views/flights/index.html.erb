@@ -1,3 +1,5 @@
+<div class="row">
+  <div class="large-12 columns">
 <h1>Listing flights</h1>
 
 <table id="flights">
@@ -21,7 +23,7 @@
     <% @flights.each do |flight| %>
       <tr>
         <td><%= flight.flight_ref %></td>
-        <td><%= flight.flight_date %></td>
+        <td><%= l flight.flight_date, locale: :fr %></td>
         <td><%= flight.time_tk_off %></td>
         <td><%= flight.flight_time.flight unless flight.flight_time.nil? %></td>
         <td><%= flight.pax_blocked %></td>
@@ -39,3 +41,5 @@
 <br>
 
 <%= link_to 'New Flight', new_flight_path %>
+</div>
+</div>

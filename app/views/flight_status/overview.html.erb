@@ -1,3 +1,5 @@
+<div class="row">
+  <div class="large-12 columns">
 <h1>Résumé des places par jour</h1>
 <table id="overview">
   <thead>
@@ -22,7 +24,7 @@
 <%  signal = "class=available" if remaining > 0%>
 <%  signal = "class=full" if remaining == 0%>
 <tr <%= signal %>>
-	<td><%= link_to theDay, flight_status_daily_path(flight_date: theDay) %> </td>
+	<td><%= link_to l(theDay,locale: :fr), flight_status_daily_path(flight_date: theDay) %> </td>
 	<td><%= seats.to_s %></td>
 	<td><%= blocked.to_s %></td>
 	<td><%= pax.to_s %></td>
@@ -31,3 +33,5 @@
 <% end %>
 </tbody>
 </table>
+</div>
+</div>
