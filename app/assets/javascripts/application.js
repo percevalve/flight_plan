@@ -17,6 +17,7 @@
 //= require turbolinks
 //= require jquery.timepicker.js
 //= require dataTables/jquery.dataTables
+//= require dataTables/jquery.dataTables.foundation
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
