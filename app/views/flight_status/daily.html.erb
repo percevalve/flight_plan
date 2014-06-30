@@ -20,13 +20,7 @@
 	<li><%= "Vol n°" + flight.name_with_details + " places disponibles : " + remaining.to_s + "/" + seats.to_s %> <%= link_to "Ajouter une résa au vol #{flight.flight_ref}" , new_resa_path(flight_id: flight.id), class: "button tiny" %>
 		<ul>
 		<% flight.resas.each do |resa| %>
-		 <%= render 'resa_details', :f => resa %>
-		<% signal = "class=#{resa.status}" unless resa.status.nil? %>
-		<% valeur = "checkin" %>
-		<% valeur = "normal" if resa.status == "checkin" %>
-		<li <%= signal %>><%= link_to resa.name_with_details, edit_resa_path(resa) %>
-			<% resa.status = "checked" %>
-			<%= link_to valeur, resa_path(resa,format: :json,resa:{status: valeur}), :method=> :put, class: "checkin button tiny alert", remote: true %></li>
+		<%= render 'shared/resa_details', :resa => resa %>
 		<% end %>
 	</ul>
 	<hr>

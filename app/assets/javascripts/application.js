@@ -22,3 +22,43 @@
 
 $(function(){ $(document).foundation(); });
 
+jQuery.fn.dataTableExt.aTypes.unshift(
+	function (sData)
+	{
+
+		var donnee = sData.substring(sData.indexOf(">")+1,sData.lastIndexOf("<"))
+		var jour = donnee.substring(0,2);
+		var mois = donnee.substring(3,5);
+		var jour3 = donnee.substring(6,9);
+		var mesJours = ["Lun", "Mar", "Mer","Jeu","Ven", "Sam", "Dim"];
+
+		if(donnee.length !== 9)
+			return null
+		
+		if(isNaN(jour) || jour > 31 || jour <= 0)
+			return null;
+
+		if(isNaN(mois) || mois > 12|| mois <= 0)
+			return null;
+
+		if(mesJours.indexOf(jour3) === -1)
+			return null
+		return 'date-francaise-courte';
+	}
+);
+
+jQuery.fn.dataTableExt.oSort['date-francaise-courte-asc']  = function(a,b) {
+	var donnea = a.substring(a.indexOf(">")+1,a.lastIndexOf("<"))
+	var donneb = b.substring(b.indexOf(">")+1,b.lastIndexOf("<"))
+	var x = parseFloat(donnea.substring(0,2)) + parseFloat(donnea.substring(3,5)) * 31;
+	var y = parseFloat(donneb.substring(0,2)) + parseFloat(donneb.substring(3,5)) * 31;
+	return ((x < y) ? -1 : ((x > y) ?  1 : 0));
+};
+
+jQuery.fn.dataTableExt.oSort['date-francaise-courte-desc'] = function(a,b) {
+	var donnea = a.substring(a.indexOf(">")+1,a.lastIndexOf("<"))
+	var donneb = b.substring(b.indexOf(">")+1,b.lastIndexOf("<"))
+	var x = parseFloat(donnea.substring(0,2)) + parseFloat(donnea.substring(3,5)) * 31;
+	var y = parseFloat(donneb.substring(0,2)) + parseFloat(donneb.substring(3,5)) * 31;
+	return ((x < y) ?  1 : ((x > y) ? -1 : 0));
+};

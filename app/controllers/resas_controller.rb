@@ -61,6 +61,7 @@ class ResasController < GreetingsController
       if @resa.update(resa_params)
         format.html { redirect_to edit_resa_path(@resa), notice: 'Resa was successfully updated.' }
         format.json { render json: @resa, status: :accepted }
+
       else
         format.html { render action: 'edit' }
         format.json { render json: @resa.errors, status: :unprocessable_entity }
