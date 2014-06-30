@@ -33,7 +33,7 @@
   <section class="top-bar-section">
     <!-- Right Nav Section -->
     <ul class="right">
-      <li class="has-dropdown"><%= link_to "Les résas", resas_path(resa_date: Flight.day_of_flight.first) %>
+      <li class="has-dropdown"><%= link_to "Les résas", resas_path(resa_date: Flight.day_of_flight.first.flight_date) %>
         <ul class="dropdown">
           <li><%= link_to "Toutes les résas", resas_path %></li>
           <li><%= link_to "Ajouter une résa", new_resa_path %></li>
