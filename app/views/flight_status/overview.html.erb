@@ -20,6 +20,10 @@
 <%	seats =  @seats_per_flight[theFlightRef].to_i %>
 <%	blocked =  @pax_blocked_per_flight[theFlightRef].to_i %>
 <%  pax = (@paxa_per_flight[theFlightRef].to_i + @paxe_per_day[theFlightRef].to_i).to_i %>
+<%  paxt = "#{pax} PAX (" %>
+<%  paxt += "#{@paxa_per_flight[theFlightRef]}Ad," unless @paxa_per_flight[theFlightRef] == 0  %>
+<%  paxt += "#{@paxe_per_flight[theFlightRef]}Ef," unless @paxe_per_flight[theFlightRef] == 0 %>
+<%  paxt = paxt[0..-2] + ")" %>
 <%  remaining = seats - blocked - pax %>
 <%  signal = "class=invalid" if remaining < 0%>
 <%  signal = "class=available" if remaining > 0%>
@@ -28,7 +32,7 @@
 	<td><%= link_to flight.name_with_details , flight_status_daily_path(flight_date: theDay) %> </td>
 	<td><%= seats.to_s %></td>
 	<td><%= blocked.to_s %></td>
-	<td><%= pax.to_s %></td>
+	<td><%= paxt %></td>
 	<td><%= remaining.to_s %></td>
 </tr>
 <% end %>
