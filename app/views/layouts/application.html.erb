@@ -55,7 +55,7 @@
             <ul class="dropdown">
               <% Flight.day_of_flight.each do |un_jour|%>
                 <% journee = un_jour.flight_date %>
-                <li><%= link_to "Les vols du #{journee} ", flights_path(flight_date: journee) %></li>
+                <li><%= link_to "Les vols du #{journee} ", flight_status_daily_path(flight_date: journee) %></li>
               <% end %>
             </ul>
           </li>
