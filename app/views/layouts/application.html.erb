@@ -22,6 +22,7 @@
   </head>
 
   <body>
+<div class="contain-to-grid">
 <nav class="top-bar">
     <ul class="title-area">
     <li class="name">
@@ -32,7 +33,7 @@
   <section class="top-bar-section">
     <!-- Right Nav Section -->
     <ul class="right">
-      <li class="has-dropdown"><%= link_to "Les résas", resas_path(resa_date: Date.today) %>
+      <li class="has-dropdown"><%= link_to "Les résas", resas_path(resa_date: Flight.day_of_flight.first) %>
         <ul class="dropdown">
           <li><%= link_to "Toutes les résas", resas_path %></li>
           <li><%= link_to "Ajouter une résa", new_resa_path %></li>
@@ -54,6 +55,7 @@
       </li>
     </ul>
 </nav>
+</div>
 
     <%= yield %>
 
