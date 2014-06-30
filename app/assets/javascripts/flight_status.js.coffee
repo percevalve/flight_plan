@@ -3,3 +3,9 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 jQuery ->
         $('#overview').dataTable({"sPaginationType": "foundation"})
+$(document).ready ->
+  $(".checkin").on("ajax:success", (e, data, status, xhr) ->
+    $(this).parent().attr(class: xhr.responseJSON.status)
+    console.log xhr.responseJSON.status
+  ).on "ajax:error", (e, xhr, status, error) ->
+    console.log error
