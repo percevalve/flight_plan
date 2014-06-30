@@ -2,15 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.invalid td{
+.invalid td, .invalid{
 	background-color: red !important;
 }
 
-.available td{
+.available td, .invalid{
 	font-weight: bold !important;
 }
 
-.full td{
+.full td, .full{
 	font-style: oblique !important;
 	font-weight: lighter;
 }

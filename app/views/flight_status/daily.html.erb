@@ -1,7 +1,7 @@
 <div class="row">
   <div class="large-12 columns">
   	<ul>
-<li>Les Vols du <%= @jour %>
+<li>Les Vols du <%= l(@jour, locale: :fr) %>
 	<hr>
 	<ul>
 <% the_date = @jour %>
@@ -11,13 +11,16 @@
 <%	blocked =  @pax_blocked_per_flight[flight_ref].to_i %>
 <%  pax = (@paxa_per_flight[flight_ref].to_i + @paxe_per_flight[flight_ref].to_i).to_i%>
 <%  remaining = seats - blocked - pax %>
+<%  signal = "class=invalid" if remaining < 0%>
+<%  signal = "class=available" if remaining > 0%>
+<%  signal = "class=full" if remaining == 0%>
 <% if the_date != flight.flight_date %>
 	<% the_date = flight.flight_date %>
 	</ul></li>
 	<li><%= l flight.flight_date,locale: :fr  %>
 	<ul>
 <% end %> 
-	<li><%= "Vol n°" + flight.name_with_details + " places disponibles : " + remaining.to_s + "/" + seats.to_s %> <%= link_to "Ajouter une résa au vol #{flight.flight_ref}" , new_resa_path(flight_id: flight.id), class: "button tiny" %>
+	<li <%= signal%>><%= "Vol n°" + flight.name_with_details + " places disponibles : " + remaining.to_s + "/" + seats.to_s %> <%= link_to "Ajouter une résa au vol #{flight.flight_ref}" , new_resa_path(flight_id: flight.id), class: "button tiny" %>
 		<ul>
 		<% flight.resas.each do |resa| %>
 		<%= render 'shared/resa_details', :resa => resa %>

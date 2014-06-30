@@ -8,11 +8,8 @@
       <th>Nom</th>
       <th>Tel</th>
       <th>Mail</th>
-      <th>Date Demand</th>
-      <th>Type de vol</th>
-      <td>Réf Vol</th>
-      <th>Ad</th>
-      <th>Enf</th>
+      <th>Vol</th>
+      <th>PAX</th>
       <th>Vente</th>
       <th>Observation</th>
       <th></th>
@@ -21,15 +18,13 @@
 
   <tbody>
     <% @resas.each do |resa| %>
-      <tr>
+    <% signal = "class=#{resa.check_in_status}" unless resa.check_in_status.nil? %>
+      <tr <%= signal %>>
         <td><%= resa.nom %></td>
         <td><%= resa.telephone %></td>
         <td><%= resa.email %></td>
-        <td><%= l(resa.demand,locale: :fr) unless resa.demand.nil?%></td>
-        <td><%= resa.flight_time.try(:name_with_flight_time) %></td>
-        <td><%= resa.flight.try(:name_with_details) %></td>
-        <td><%= resa.paxa %></td>
-        <td><%= resa.paxe %></td>
+        <td><%= resa.info_vol %></td>
+        <td><%= resa.paxt %></td>
         <td><%= resa.vente %></td>
         <td><%= resa.observation %></td>
         <td><%= link_to 'Modifier', edit_resa_path(resa) %></td>

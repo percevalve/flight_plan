@@ -1,4 +1,4 @@
-<% signal = "class=#{resa.check_in_status}" unless resa.check_in_status.nil? %>
+	<% signal = "class=#{resa.check_in_status}" unless resa.check_in_status.nil? %>
     <% valeur = "checked-in" %>
     <% valeur = "normal" if resa.check_in_status == "checked-in" %>
     <li <%= signal %>><%= link_to resa.name_with_details, edit_resa_path(resa) %>

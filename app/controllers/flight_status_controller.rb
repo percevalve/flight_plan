@@ -9,6 +9,7 @@ class FlightStatusController < GreetingsController
   	@paxa_per_flight = Flight.list_upcoming_visible_flights.joins(:resas).group(:flight_ref).sum(:paxa)
     @paxe_per_flight = Flight.list_upcoming_visible_flights.joins(:resas).group(:flight_ref).sum(:paxe)
   	@seats_per_flight = Flight.list_upcoming_visible_flights.group(:flight_ref).sum(:seats)
+    @pax_blocked_per_flight = Flight.list_upcoming_visible_flights.group(:flight_ref).sum(:pax_blocked)
   end
 
   def daily

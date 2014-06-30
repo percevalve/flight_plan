@@ -4,7 +4,7 @@
 <table id="overview">
   <thead>
     <tr>
-      <th>Date</th>
+      <th>Flight Ref</th>
       <th>Total</th>
       <th>Bloquée</th>
       <th>PAX</th>
@@ -14,17 +14,18 @@
 
   <tbody>
 
-<% @seats_per_day.each_with_index do |seat,index| %>
-<%	theDay = seat[0] %>
-<%	seats =  seat[1].to_i %>
-<%	blocked =  @pax_blocked_per_day[theDay].to_i %>
-<%  pax = (@paxa_per_day[theDay].to_i + @paxe_per_day[theDay].to_i).to_i%>
+<% @flights.each do |flight| %>
+<%  theDay = flight.flight_date %>
+<%  theFlightRef = flight.flight_ref %>
+<%	seats =  @seats_per_flight[theFlightRef].to_i %>
+<%	blocked =  @pax_blocked_per_flight[theFlightRef].to_i %>
+<%  pax = (@paxa_per_flight[theFlightRef].to_i + @paxe_per_day[theFlightRef].to_i).to_i %>
 <%  remaining = seats - blocked - pax %>
 <%  signal = "class=invalid" if remaining < 0%>
 <%  signal = "class=available" if remaining > 0%>
 <%  signal = "class=full" if remaining == 0%>
 <tr <%= signal %>>
-	<td><%= link_to l(theDay,locale: :fr), flight_status_daily_path(flight_date: theDay) %> </td>
+	<td><%= link_to flight.name_with_details , flight_status_daily_path(flight_date: theDay) %> </td>
 	<td><%= seats.to_s %></td>
 	<td><%= blocked.to_s %></td>
 	<td><%= pax.to_s %></td>
