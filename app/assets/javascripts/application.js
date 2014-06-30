@@ -14,7 +14,6 @@
 //= require jquery_ujs
 //= require jquery.ui.all
 //= require foundation
-//= require turbolinks
 //= require jquery.timepicker.js
 //= require dataTables/jquery.dataTables
 //= require dataTables/jquery.dataTables.foundation

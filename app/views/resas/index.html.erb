@@ -13,12 +13,15 @@
       <th>Vente</th>
       <th>Observation</th>
       <th></th>
+      <th></th>
     </tr>
   </thead>
 
   <tbody>
     <% @resas.each do |resa| %>
     <% signal = "class=#{resa.check_in_status}" unless resa.check_in_status.nil? %>
+    <% valeur = "checked-in" %>
+    <% valeur = "normal" if resa.check_in_status == "checked-in" %>
       <tr <%= signal %>>
         <td><%= resa.nom %></td>
         <td><%= resa.telephone %></td>
@@ -27,7 +30,8 @@
         <td><%= resa.paxt %></td>
         <td><%= resa.vente %></td>
         <td><%= resa.observation %></td>
-        <td><%= link_to 'Modifier', edit_resa_path(resa) %></td>
+        <td><%= link_to 'Modifier', edit_resa_path(resa), class: "button tiny" %></td>
+        <td><%= link_to "Check-in Effectuer", resa_path(resa,format: :json,resa:{check_in_status: valeur}), :method=> :put, class: "checkin_table button tiny alert", remote: true %></td>
       </tr>
     <% end %>
   </tbody>
