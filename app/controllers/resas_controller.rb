@@ -87,6 +87,6 @@ class ResasController < GreetingsController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def resa_params
-      params.require(:resa).permit(:refresa, :demand, :duree, :paxa, :paxe, :vente, :nom, :telephone, :email, :observation, :flight_id, :flight_time_id, :heure_demand, :status)
+      params.require(:resa).permit(:refresa, :check_in_status, :demand, :duree, :paxa, :paxe, :vente, :nom, :telephone, :email, :observation, :flight_id, :flight_time_id, :heure_demand)
     end
 end
