@@ -61,3 +61,24 @@ jQuery.fn.dataTableExt.oSort['date-francaise-courte-desc'] = function(a,b) {
 	var y = parseFloat(donneb.substring(0,2)) + parseFloat(donneb.substring(3,5)) * 31;
 	return ((x < y) ?  1 : ((x > y) ? -1 : 0));
 };
+
+var updateUrl = function(maVariable,maValeur){
+		var elt  = document.URL.split("?");
+		var maValeur = maValeur.split("/").join("%2F"); 
+		var urlNouveau = elt[0].replace("#","") + "?";
+		
+		if(elt.length > 1){
+			var parametres = elt[1].split("&");
+			var variables  = parametres.map(function(a){return a.split("=")}).reduce(function(p,c){p.push(c[0]);return p},[]);
+			
+			for(elt in parametres){
+				var theElt = parametres[elt];
+				console.log(theElt);
+				if(theElt.split("=")[0] !== maVariable)
+					urlNouveau += theElt + "&";
+			}
+		}
+		
+		urlNouveau += maVariable + "=" + maValeur;
+		return urlNouveau;
+	}
