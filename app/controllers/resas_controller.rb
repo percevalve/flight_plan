@@ -5,13 +5,23 @@ class ResasController < GreetingsController
   # GET /resas
   # GET /resas.json
   def index
-    if params.include?(:resa_date)
-      @jour = Date.strptime(params[:resa_date], "%d/%m/%y")
-      @resas = Resa.all_for_this_date(@jour)
+    if params.include?(:sans_vol) and params[:sans_vol] == "1"
+      @resas = Resa.no_flight_assigned
     else
       @resas = Resa.all
     end
-    
+
+    if params.include?(:resa_date)
+      @date_debut = Date.strptime(params[:resa_date], "%d/%m/%y")
+      @jour = @date_debut
+      @date_fin = @date_debut
+      @resas = @resas.all_for_those_dates(@date_debut,@date_debut)
+    elsif params.include?(:date_debut) or params.include?(:date_fin) 
+      @date_debut = Date.strptime(params[:date_debut], "%d/%m/%y") unless params[:date_debut].nil? or params[:date_debut] == ""
+      @date_fin = Date.strptime(params[:date_fin], "%d/%m/%y") unless params[:date_fin].nil? or params[:date_fin] == ""
+      @resas = @resas.all_for_those_dates(@date_debut,@date_fin)
+    end
+
   end
 
   # GET /resas/1

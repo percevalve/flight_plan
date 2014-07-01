@@ -1,6 +1,6 @@
 	<% signal = "class=#{resa.check_in_status}" unless resa.check_in_status.nil? %>
     <% valeur = "checked-in" %>
     <% valeur = "normal" if resa.check_in_status == "checked-in" %>
-    <li <%= signal %>><%= link_to resa.name_with_details, edit_resa_path(resa) %>
+    <li <%= signal %>><%= link_to "#{resa.name_with_details} - #{resa.observation}", edit_resa_path(resa) %>
       <% resa.check_in_status = valeur %>
-      <%= link_to "Check-in Effectuer", resa_path(resa,format: :json,resa:{check_in_status: valeur}), :method=> :put, class: "checkin button tiny alert", remote: true %></li>
+      <%= link_to "Check-in Effectué", resa_path(resa,format: :json,resa:{check_in_status: valeur}), :method=> :put, class: "checkin button tiny alert", remote: true %></li>

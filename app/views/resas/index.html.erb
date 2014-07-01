@@ -1,16 +1,26 @@
 <div class="row">
-  <div class="large-12 columns">
+  <div class="large-8 columns">
     <h1>Les Résas <%= " du #{@jour}" unless @jour.nil? %></h1>
+  </div>
+  <div class="large-2 columns">
+    <%= label_tag "Date début" %>
+    <%= text_field_tag :date_debut, @date_debut ,{class: "date_debut"}%>
+  </div>
+  <div class="large-2 columns">
+    <%= label_tag "Date fin" %>
+    <%= text_field_tag :date_fin, @date_fin ,{class: "date_fin"}%>
+  </div>
 
+
+</div>
+<div class="row">
 <table id="resas">
   <thead>
     <tr>
       <th>Nom</th>
-      <th>Tel</th>
-      <th>Mail</th>
+      <th>Contact</th>
       <th>Vol</th>
       <th>PAX</th>
-      <th>Vente</th>
       <th>Observation</th>
       <th></th>
       <th></th>
@@ -24,12 +34,12 @@
     <% valeur = "normal" if resa.check_in_status == "checked-in" %>
       <tr <%= signal %>>
         <td><%= resa.nom %></td>
-        <td><%= resa.telephone %></td>
-        <td><%= resa.email %></td>
+        <td><%= resa.telephone %><br>
+        <%= resa.email %></td>
         <td><%= resa.info_vol %></td>
         <td><%= resa.paxt %></td>
-        <td><%= resa.vente %></td>
-        <td><%= resa.observation %></td>
+        <td><%= resa.vente %><br>
+        <%= resa.observation %></td>
         <td><%= link_to 'Modifier', edit_resa_path(resa), class: "button tiny" %></td>
         <td><%= link_to "Check-in Effectuer", resa_path(resa,format: :json,resa:{check_in_status: valeur}), :method=> :put, class: "checkin_table button tiny alert", remote: true %></td>
       </tr>

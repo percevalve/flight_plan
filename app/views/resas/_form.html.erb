@@ -44,22 +44,21 @@
 </div>
 <div class="row">
   <div class="large-2 columns">
-  <div class="field">
-    <%= f.label "Statut du Check-In" %><br>
-    <%= f.text_field :check_in_status %>
+    <div class="field">
+      <%= f.label "Statut du Check-In" %><br>
+      <%= f.text_field :check_in_status %>
+    </div>
   </div>
-</div>
-<div class="row">
   <div class="large-2 columns">
   <div class="field">
     <%= f.label "Date demandée" %><br>
-    <%= f.text_field :demand,class: "modelname_due_date",value: @resa.demand.try(:strftime, "%m/%d/%Y") %>
+    <%= f.text_field :demand,class: "modelname_due_date",value: @resa.demand %>
   </div>
 </div>
 <div class="large-2 columns">
   <div class="field">
     <%= f.label "Heure demandée" %><br>
-    <%= f.text_field :heure_demand %>
+    <%= f.text_field :heure_demand, class: "modelname_time_demand" %>
   </div>
 </div>
 <div class="large-3 columns">

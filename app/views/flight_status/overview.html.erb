@@ -1,6 +1,22 @@
 <div class="row">
+  <div class="large-8 columns">
+    <h1>Résumé des places par jour</h1>
+  </div>
+  <div class="large-2 columns">
+    <%= label_tag "Date début" %>
+    <%= text_field_tag :date_debut, @date_debut ,{class: "date_debut"}%>
+  </div>
+  <div class="large-2 columns">
+    <%= label_tag "Date fin" %>
+    <%= text_field_tag :date_fin, @date_fin ,{class: "date_fin"}%>
+  </div>
+</div>
+
+
+
+
+<div class="row">
   <div class="large-12 columns">
-<h1>Résumé des places par jour</h1>
 <table id="overview">
   <thead>
     <tr>
@@ -19,7 +35,7 @@
 <%  theFlightRef = flight.flight_ref %>
 <%	seats =  @seats_per_flight[theFlightRef].to_i %>
 <%	blocked =  @pax_blocked_per_flight[theFlightRef].to_i %>
-<%  pax = (@paxa_per_flight[theFlightRef].to_i + @paxe_per_day[theFlightRef].to_i).to_i %>
+<%  pax = (@paxa_per_flight[theFlightRef].to_i + @paxe_per_flight[theFlightRef].to_i).to_i %>
 <%  paxt = "#{pax} PAX (" %>
 <%  paxt += "#{@paxa_per_flight[theFlightRef]}Ad," unless @paxa_per_flight[theFlightRef] == 0  %>
 <%  paxt += "#{@paxe_per_flight[theFlightRef]}Ef," unless @paxe_per_flight[theFlightRef] == 0 %>
