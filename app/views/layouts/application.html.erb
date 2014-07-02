@@ -39,7 +39,7 @@
           <li><%= link_to "Ajouter une résa", new_resa_path %></li>
           <li class="has-dropdown"><%= link_to "Résa par jour" %>
             <ul class="dropdown">
-              <% Flight.day_of_flight.each do |un_jour|%>
+              <% Resa.list_dates_for_upcoming_visible_resas.each do |un_jour|%>
                 <% journee = un_jour.flight_date %>
                 <li><%= link_to "Les résas du #{journee} ", resas_path(date_debut: journee, date_fin: journee) %></li>
               <% end %>
