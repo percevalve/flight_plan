@@ -8,7 +8,7 @@ class Flight < ActiveRecord::Base
   	end
 
   	def self.list_upcoming_visible_flights
-  		where(flight_status:'SHOW').where("flight_date >= ?", Date.today)
+  		where("flights.flight_status = ? ", 'SHOW').where("flights.flight_date >= ?", Date.today)
   	end
 
   	def self.day_of_flight

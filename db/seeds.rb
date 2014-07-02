@@ -26,7 +26,15 @@ csv_text = File.read('resa.csv', encoding: "ISO8859-1")
 csv = CSV.parse(csv_text, :headers => true)
 csv.each do |row|
 	puts row['demand']
-	row['demand'] = Date.strptime(row['demand'], "%d/%m, %a") unless row["demand"].nil?
+	if !row["demand"].nil?
+		begin
+			row['demand'] = Date.strptime(row['demand'], "%d/%m, %a")
+		rescue
+			puts "#{row['refresa']} => #{row['demand']}, #{ Resa.last.id + 1}"
+			row['observation'] += "pb de date #{row['demand']}"
+			row['demand'] = Date.strptime(row['demand'], "%d/%m, %a")
+		end
+	end
 	row['flight_time_id'] = FlightTime.where(flight: row['FlightName']).first.id unless FlightTime.where(flight: row['FlightName']).count == 0
 	row['flight_id'] = Flight.where(flight_ref: row['flight']).first.id unless Flight.where(flight_ref: row['flight']).count == 0
 	row.delete('FlightName')
