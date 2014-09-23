@@ -38,6 +38,7 @@ group :development, :test do
     gem 'rspec-rails'
     gem "capybara"
     gem 'debugger'
+    gem 'faker'
 end
 group :production do 
     gem 'pg'

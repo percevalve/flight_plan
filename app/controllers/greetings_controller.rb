@@ -6,8 +6,10 @@ class GreetingsController < ApplicationController
 
    def require_token
    	@token = params["token"]
-   	authorized = ['***REMOVED***','***REMOVED***']
-   	if cookies.signed[:token].nil? and cookies.signed[:token] != "aaa" and !authorized.include?(@token)
+    test = ENV["TEST"]
+    p test
+   	authorized = [ENV["AUTHORIZED_TOKEN_A"],ENV["AUTHORIZED_TOKEN_B"]]
+    if cookies.signed[:token].nil? and cookies.signed[:token] != "aaa" and !authorized.include?(@token)
    		redirect_to greetings_index_path
    	elsif cookies.signed[:token].nil? and authorized.include?(@token)
    		cookies.signed[:token] = { value: @token, :expires => 1.year.from_now}

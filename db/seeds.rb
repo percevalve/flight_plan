@@ -7,6 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 require 'csv'
 
+
 csv_text = File.read('flight_time.csv')
 csv = CSV.parse(csv_text, :headers => true)
 csv.each do |row|
